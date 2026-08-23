@@ -1,0 +1,29 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: rag-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: rag-app
+    env_file:
+      - .env
+    depends_on:
+      - ollama
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - app_data:/app/data
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  ollama_data:
+  app_data:
+
