@@ -10,6 +10,15 @@ Phase 0 scaffold only:
 - FastAPI health endpoint
 - Docker Compose and environment template
 
+See [docs/phase0_overview.md](docs/phase0_overview.md) for the folder-by-folder explanation and data flow diagram.
+
+Phase 1 started:
+- PDF and EPUB ingestion modules
+- text cleaning and normalization
+- document parser entrypoint
+
+See [docs/phase1_overview.md](docs/phase1_overview.md) for the ingestion flow and simplifications.
+
 ## Next steps
 
 1. Document ingestion
@@ -19,4 +28,3 @@ Phase 0 scaffold only:
 5. Grounded generation
 6. Evaluation
 7. UI
-

@@ -3,6 +3,14 @@ from typing import Any
 
 
 @dataclass(slots=True)
+class ExtractedPage:
+    page_number: int
+    text: str
+    source_type: str = "pdf"
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
 class SourceDocument:
     document_id: str
     source_path: str
@@ -25,8 +33,14 @@ class DocumentChunk:
 
 
 @dataclass(slots=True)
+class ParsedDocument:
+    document: SourceDocument
+    pages: list[ExtractedPage]
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
 class RetrievedChunk:
     chunk: DocumentChunk
     score: float
     rank: int = 0
-
