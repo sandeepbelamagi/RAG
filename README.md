@@ -19,6 +19,17 @@ Phase 1 started:
 
 See [docs/phase1_overview.md](docs/phase1_overview.md) for the ingestion flow and simplifications.
 
+Configured storage locations:
+- PDFs/EPUBs: `/Users/macbook/Documents/GenAI/Projects/Data/pdf_data`
+- ChromaDB: `/Users/macbook/Documents/GenAI/Projects/Data/DBs/chroma`
+
+Phase 2 started:
+- fixed-size chunking with overlap
+- structure-aware chunking by headings
+- chunk metadata and stable chunk IDs
+
+See [docs/phase2_overview.md](docs/phase2_overview.md) for the chunking flow and trade-offs.
+
 ## Next steps
 
 1. Document ingestion

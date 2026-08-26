@@ -31,3 +31,13 @@ RAG quality depends heavily on the quality of extracted text. If page headers, f
 ## Important Simplification
 
 This is a best-effort text extraction pipeline, not a full layout-aware OCR system. For many digital PDFs and EPUBs, it will work well enough to start. For difficult scanned or multi-column books, we may need stronger parsing later.
+
+## Storage Paths
+
+For this project, the source books live in:
+
+- `/Users/macbook/Documents/GenAI/Projects/Data/pdf_data`
+
+Later, the ChromaDB persistence directory will be:
+
+- `/Users/macbook/Documents/GenAI/Projects/Data/DBs/chroma`
