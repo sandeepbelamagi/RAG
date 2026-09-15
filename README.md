@@ -4,7 +4,7 @@ Local retrieval-augmented generation app for AI/ML books, built with Python, Oll
 
 ## Status
 
-Phase 0 scaffold only:
+Phases 0-4 are implemented:
 - project layout
 - shared config and domain models
 - FastAPI health endpoint
@@ -30,12 +30,23 @@ Phase 2 started:
 
 See [docs/phase2_overview.md](docs/phase2_overview.md) for the chunking flow and trade-offs.
 
+Phase 3 started:
+- Ollama batch embedding client
+- persistent ChromaDB vector store
+- incremental batch indexing with stable chunk IDs
+
+See [docs/phase3_overview.md](docs/phase3_overview.md) for the embedding and indexing flow.
+
+Phase 4 started:
+- top-k vector retrieval
+- Chroma metadata filtering
+- MMR diversity reranking
+
+See [docs/phase4_overview.md](docs/phase4_overview.md) for the retrieval flow and trade-offs.
+
 ## Next steps
 
-1. Document ingestion
-2. Chunking
-3. Embeddings and indexing
-4. Retrieval and reranking
-5. Grounded generation
-6. Evaluation
-7. UI
+1. Retrieval and reranking
+2. Grounded generation
+3. Evaluation
+4. API and UI integration
