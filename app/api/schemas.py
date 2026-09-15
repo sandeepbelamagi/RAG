@@ -8,6 +8,12 @@ class HealthResponse(BaseModel):
     environment: str
 
 
+class ReadinessResponse(BaseModel):
+    status: str
+    ollama: str
+    chroma: str
+
+
 class IngestResponse(BaseModel):
     filename: str
     strategy: str

@@ -1,6 +1,8 @@
 import logging
-from functools import lru_cache
 from pathlib import Path
+from functools import lru_cache
+from urllib.error import URLError
+from urllib.request import urlopen
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, status
 
@@ -10,6 +12,7 @@ from app.api.schemas import (
     IngestResponse,
     QueryRequest,
     QueryResponse,
+    ReadinessResponse,
     RetrievedSourceResponse,
 )
 from app.api.service import RAGService, build_rag_service
@@ -31,6 +34,20 @@ def health() -> HealthResponse:
     return HealthResponse(status="ok", app_name=settings.app_name, environment=settings.app_env)
 
 
+@router.get("/ready", response_model=ReadinessResponse)
+def ready() -> ReadinessResponse:
+    settings = get_settings()
+    chroma_status = "ok" if Path(settings.chroma_persist_dir).exists() else "unavailable"
+    ollama_status = "unavailable"
+    try:
+        with urlopen(f"{settings.ollama_base_url.rstrip('/')}/api/tags", timeout=2) as response:
+            ollama_status = "ok" if response.status == 200 else "unavailable"
+    except (OSError, URLError):
+        pass
+    status_value = "ok" if chroma_status == "ok" and ollama_status == "ok" else "not_ready"
+    return ReadinessResponse(status=status_value, ollama=ollama_status, chroma=chroma_status)
+
+
 @router.post("/ingest", response_model=IngestResponse, status_code=status.HTTP_201_CREATED)
 async def ingest(
     file: UploadFile = File(...),
@@ -41,11 +58,17 @@ async def ingest(
     if Path(filename).suffix.lower() not in {".pdf", ".epub"}:
         raise HTTPException(status_code=400, detail="Only PDF and EPUB files are supported")
 
-    destination = Path(get_settings().upload_dir) / filename
-    destination.parent.mkdir(parents=True, exist_ok=True)
+    settings = get_settings()
     try:
-        destination.write_bytes(await file.read())
+        content = await file.read(settings.max_upload_mb * 1024 * 1024 + 1)
+        if len(content) > settings.max_upload_mb * 1024 * 1024:
+            raise HTTPException(status_code=413, detail="Uploaded file is too large")
+        destination = Path(settings.upload_dir) / filename
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(content)
         chunks_indexed = service.ingest(destination, strategy=strategy)
+    except HTTPException:
+        raise
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:

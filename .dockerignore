@@ -1,0 +1,10 @@
+.git
+.gitignore
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+rag/
+data/
+eval/*.json
+tests/

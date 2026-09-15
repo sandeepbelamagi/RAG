@@ -17,6 +17,7 @@ class Settings:
         self.chroma_collection = os.getenv("CHROMA_COLLECTION", "book_chunks")
         self.embedding_batch_size = int(os.getenv("EMBEDDING_BATCH_SIZE", "32"))
         self.upload_dir = os.getenv("UPLOAD_DIR", "data/books")
+        self.max_upload_mb = int(os.getenv("MAX_UPLOAD_MB", "100"))
 
 
 @lru_cache(maxsize=1)

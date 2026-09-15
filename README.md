@@ -4,7 +4,7 @@ Local retrieval-augmented generation app for AI/ML books, built with Python, Oll
 
 ## Status
 
-Phases 0-8 are implemented:
+Phases 0-9 are implemented:
 - project layout
 - shared config and domain models
 - FastAPI health endpoint
@@ -73,6 +73,13 @@ Phase 8 started:
 
 See [docs/phase8_overview.md](docs/phase8_overview.md) for UI setup and trade-offs.
 
+Phase 9 started:
+- request logging with request IDs and durations
+- `/ready` dependency readiness endpoint
+- upload-size protection, Docker health checks, and CI workflow
+
+See [docs/phase9_overview.md](docs/phase9_overview.md) for hardening scope and limitations.
+
 ## Next steps
 
-1. Production hardening, CI, and deployment improvements
+1. Deployment-specific configuration and operational runbooks
