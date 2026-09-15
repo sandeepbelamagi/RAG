@@ -4,7 +4,7 @@ Local retrieval-augmented generation app for AI/ML books, built with Python, Oll
 
 ## Status
 
-Phases 0-4 are implemented:
+Phases 0-5 are implemented:
 - project layout
 - shared config and domain models
 - FastAPI health endpoint
@@ -44,9 +44,15 @@ Phase 4 started:
 
 See [docs/phase4_overview.md](docs/phase4_overview.md) for the retrieval flow and trade-offs.
 
+Phase 5 started:
+- grounded Ollama generation
+- explicit context injection and citation markers
+- low-confidence “I don't know” fallback
+
+See [docs/phase5_overview.md](docs/phase5_overview.md) for the generation flow and prompt contract.
+
 ## Next steps
 
-1. Retrieval and reranking
-2. Grounded generation
-3. Evaluation
-4. API and UI integration
+1. Evaluation and metrics
+2. FastAPI query and ingestion integration
+3. Streamlit or React UI
