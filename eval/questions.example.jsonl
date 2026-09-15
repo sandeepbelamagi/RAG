@@ -1,0 +1,2 @@
+{"case_id":"attention-001","question":"What is the purpose of attention in the book?","expected_answer":"Replace this with the answer supported by your book.","relevant_chunk_ids":["replace-with-real-chunk-id"]}
+{"case_id":"training-001","question":"How does the book describe the training objective?","expected_answer":"Replace this with the answer supported by your book.","relevant_chunk_ids":["replace-with-real-chunk-id"]}

@@ -4,7 +4,7 @@ Local retrieval-augmented generation app for AI/ML books, built with Python, Oll
 
 ## Status
 
-Phases 0-5 are implemented:
+Phases 0-6 are implemented:
 - project layout
 - shared config and domain models
 - FastAPI health endpoint
@@ -51,8 +51,15 @@ Phase 5 started:
 
 See [docs/phase5_overview.md](docs/phase5_overview.md) for the generation flow and prompt contract.
 
+Phase 6 started:
+- JSONL evaluation case format
+- retrieval recall/hit-rate metrics
+- heuristic faithfulness and citation-validity metrics
+- JSON metrics report support
+
+See [docs/phase6_overview.md](docs/phase6_overview.md) for the evaluation methodology and limitations.
+
 ## Next steps
 
-1. Evaluation and metrics
-2. FastAPI query and ingestion integration
-3. Streamlit or React UI
+1. FastAPI query and ingestion integration
+2. Streamlit or React UI
