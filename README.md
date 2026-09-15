@@ -2,6 +2,8 @@
 
 Local retrieval-augmented generation app for AI/ML books, built with Python, Ollama, and ChromaDB.
 
+See [docs/runbook.md](docs/runbook.md) for Docker Compose and local Python startup instructions.
+
 ## Status
 
 Phases 0-9 are implemented:
