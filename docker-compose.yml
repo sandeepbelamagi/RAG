@@ -24,5 +24,20 @@ services:
       - /Users/macbook/Documents/GenAI/Projects/Data/DBs/chroma:/Users/macbook/Documents/GenAI/Projects/Data/DBs/chroma
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: rag-ui
+    environment:
+      API_BASE_URL: http://app:8000
+    depends_on:
+      - app
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    command: streamlit run app/ui/streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+
 volumes:
   ollama_data:

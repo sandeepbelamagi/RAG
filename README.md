@@ -4,7 +4,7 @@ Local retrieval-augmented generation app for AI/ML books, built with Python, Oll
 
 ## Status
 
-Phases 0-7 are implemented:
+Phases 0-8 are implemented:
 - project layout
 - shared config and domain models
 - FastAPI health endpoint
@@ -66,6 +66,13 @@ Phase 7 started:
 
 See [docs/phase7_overview.md](docs/phase7_overview.md) for the API flow and production limitations.
 
+Phase 8 started:
+- Streamlit chat interface
+- PDF/EPUB upload controls
+- answer confidence, citations, and retrieved source display
+
+See [docs/phase8_overview.md](docs/phase8_overview.md) for UI setup and trade-offs.
+
 ## Next steps
 
-1. Streamlit or React UI
+1. Production hardening, CI, and deployment improvements
